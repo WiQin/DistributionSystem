@@ -21,14 +21,14 @@ $(function(){
            type:"POST",
            /*data:"{account:"+account.val()+",password:"+password.val()+"t:"+new Date().getTime()+"}",
            datatype:"json",*/
-           data:"account="+account.val()+"&passWord="+password.val()+
+           data:"account="+account.val()+"&password="+password.val()+
                "&time="+new Date().getTime(),
            success:function (msg) {
-               alter(mag == 1);
-               if(amg==1){
+
+               if(msg==1){
                    $(".link_pwd").html("用户名错误");
                    return flase;
-               }else if(mag == 2){
+               }else if(msg == 2){
                    $(".link_pwd").html("密码错误");
                    return flase;
                }else if(msg==3){

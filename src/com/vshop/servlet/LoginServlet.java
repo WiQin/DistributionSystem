@@ -29,6 +29,7 @@ public class LoginServlet extends HttpServlet {
         IUserService userService = new UserServiceImpl();
         //接收返回结果
         String result = userService.login(account, StringHelper.MD5(password));
+        System.out.println(result);
 
         //用户名存到session中
         if(result.equals("3")){
