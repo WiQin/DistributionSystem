@@ -19,10 +19,11 @@ $(function(){
        $.ajax({
            url:"login.do",
            type:"POST",
-           /*data:"{account:"+account.val()+",password:"+password.val()+"t:"+new Date().getTime()+"}",
-           datatype:"json",*/
-           data:"account="+account.val()+"&password="+password.val()+
-               "&time="+new Date().getTime(),
+           //json对象
+           data:{"account":account.val(),"password":password.val(),"t":new Date().getTime()},
+           dataType:"json",
+           /*data:"account="+account.val()+"&password="+password.val()+
+               "&time="+new Date().getTime(),*/
            success:function (msg) {
 
                if(msg==1){
@@ -34,7 +35,7 @@ $(function(){
                }else if(msg==3){
                    location.href = 'main.jsp';
                }
-               //alert(msg);
+
            },
            error:function(er){
                alert(er.message);

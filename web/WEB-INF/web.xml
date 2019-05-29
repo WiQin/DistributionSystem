@@ -9,4 +9,36 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+    <param-name>loginPage</param-name>
+    <param-value>/index.jsp</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>validatePage</param-name>
+    <param-value>/main.jsp,/info.do,/saveInfo.do,/sys.jsp</param-value>
+  </context-param>
+
+  <!---->
+  <context-param>
+    <param-name>commonPage</param-name>
+    <param-value>/index.jsp,/getpass.jsp,updatepass.jsp</param-value>
+  </context-param>
+
+  <!-- 验证用户是否登录的Filter -->
+  <filter>
+    <filter-name>validateLogn</filter-name>
+    <filter-class>com.vshop.util.ValidateFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>validateLogn</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>validateLogn</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
+
+
 </web-app>

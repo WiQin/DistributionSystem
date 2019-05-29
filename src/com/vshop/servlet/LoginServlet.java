@@ -40,7 +40,10 @@ public class LoginServlet extends HttpServlet {
 
          PrintWriter out = response.getWriter();
          //结果返回给ajax请求
-         out.print(result);//ajax请求登陆，返回值是中文乱码
+         out.print(result);//ajax请求登陆，返回值是中文乱码  filter
+
+
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

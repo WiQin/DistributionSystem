@@ -26,6 +26,7 @@ body {
 </style>
 </head>
 <body>
+	${msg}
 	<!-- 引入我们的头部文件 -->
 	<%@ include file="head.jsp"%>
 	<div class="container-fluid "
