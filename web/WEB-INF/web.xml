@@ -23,7 +23,7 @@
   <!---->
   <context-param>
     <param-name>commonPage</param-name>
-    <param-value>/index.jsp,/getpass.jsp,updatepass.jsp</param-value>
+    <param-value>/index.jsp,/login.do,/getpass.jsp,updatepass.jsp</param-value>
   </context-param>
 
   <!-- 验证用户是否登录的Filter -->

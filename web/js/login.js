@@ -38,6 +38,7 @@ $(function(){
 
            },
            error:function(er){
+               console.log(er);
                alert(er.message);
            }
        })
