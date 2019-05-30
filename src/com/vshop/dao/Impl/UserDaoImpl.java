@@ -48,7 +48,7 @@ public class UserDaoImpl implements IUserDao {
     **/
     @Override
     public User getUserById(String user_id) {
-        String sql = "select user_creator,user_name,birthday,password,user_faq,user_answer,city,user_level,left_num,right_num from tuser where user_id =  ?";
+        String sql = "select user_creator,user_name,birthday,password,user_faq,user_answer,city,user_level,left_num,right_num,id from tuser where user_id =  ?";
         return (User)jdbcUtil.executeQuery(sql, new IResultSetUtil() {
             @Override
             public Object doHandler(ResultSet rs) throws SQLException {
@@ -61,6 +61,9 @@ public class UserDaoImpl implements IUserDao {
                     user.setUser_faq(rs.getInt(5));
                     user.setUser_answer(rs.getString(6));
                     user.setUser_city(rs.getString(7));
+                    user.setLeft_num(rs.getInt(8));
+                    user.setRight_num(rs.getInt(9));
+                    user.setId(rs.getInt(10));
 
                     user.setUser_id(user_id);
 
@@ -84,5 +87,26 @@ public class UserDaoImpl implements IUserDao {
         String sql = "update tuser set user_name = ?,birthday = ?,user_faq = ?,user_answer = ?,city = ?,user_level = ?,left_num = ?,right_num = ? where user_id =  ?";
         return jdbcUtil.executeUpdate(sql,user.getUser_name(),user.getUser_birthday(),user.getUser_faq(),user.getUser_answer(),user.getUser_city(),user.getLevel(),user.getLeft_num(),user.getRight_num(),user.getUser_id()) > 0;
 
+    }
+
+    //
+    @Override
+    public boolean addUser(User user) {
+        String sql = "INSERT INTO TUSER(USER_ID,USER_NAME,BIRTHDAY,CITY,PASSWORD,USER_CREATOR,CREATETIME,LEFT_NUM,RIGHT_NUM) VALUES (?,?,?,?,?,?,?,?,?)";
+        return jdbcUtil.executeUpdate(sql,user.getUser_id(),user.getUser_name(),user.getUser_birthday(),user.getUser_city(),user.getUser_pass(),user.getUser_creator(),user.getCreate_time(),user.getLeft_num(),user.getRight_num())>0;
+
+    }
+
+
+    @Override
+    public boolean updateLeft_num(int right_num,int id) {
+        String sql = "update tuser set LEFT_NUM = left_num+2 where left_num >= ? AND ID <> ?";
+        return jdbcUtil.executeUpdate(sql,right_num,id)>0;
+    }
+
+    @Override
+    public boolean updateRight_num(int left_num,int id) {
+        String sql = "update tuser set right_num = right_num+2 where right_num >= ? AND ID <> ?";
+        return jdbcUtil.executeUpdate(sql,left_num,id)>0;
     }
 }

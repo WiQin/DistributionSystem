@@ -14,7 +14,7 @@
 				<li><a href="index.jsp">安全退出</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right hidden-sm">
-				<li><a style="color: #fff;" href="info.html">欢迎您：${sessionScope.user}</a></li>
+				<li><a style="color: #fff;" href="info.jsp">欢迎您：${sessionScope.user}</a></li>
 			</ul>
 
 		</div>

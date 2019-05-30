@@ -32,4 +32,22 @@ public class UserServiceImpl implements IUserService {
         iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
         return iUserDao.saveUserInfo(user);
     }
+
+    @Override
+    public boolean addUser(User user) {
+        iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
+        return iUserDao.addUser(user);
+    }
+
+    @Override
+    public boolean updateLeft_num(int right_num,int id) {
+        iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
+        return iUserDao.updateLeft_num(right_num,id);
+    }
+
+    @Override
+    public boolean updateRight_num(int left_num,int id) {
+        iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
+        return iUserDao.updateRight_num(left_num,id);
+    }
 }

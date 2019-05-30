@@ -13,7 +13,7 @@ $(function(){
        }
        if(password.val()==""){
            password.focus();
-           return flase;
+           return false;
        }
 
        $.ajax({

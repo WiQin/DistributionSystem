@@ -17,7 +17,7 @@
 
   <context-param>
     <param-name>validatePage</param-name>
-    <param-value>/main.jsp,/info.do,/saveInfo.do,/sys.jsp</param-value>
+    <param-value>/main.jsp,/info.do,/saveInfo.do,/sys.jsp,/add.jsp,/user.jsp,/out.jsp,/add.do,/check.do</param-value>
   </context-param>
 
   <!---->
