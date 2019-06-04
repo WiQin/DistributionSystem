@@ -47,7 +47,7 @@ public class UserDaoImpl implements IUserDao {
     * @Return com.vshop.entity.User
     **/
     @Override
-    public User getUserById(String user_id) {
+    public User getUserByUserId(String user_id) {
         String sql = "select user_creator,user_name,birthday,password,user_faq,user_answer,city,user_level,left_num,right_num,id from tuser where user_id =  ?";
         return (User)jdbcUtil.executeQuery(sql, new IResultSetUtil() {
             @Override
@@ -60,10 +60,11 @@ public class UserDaoImpl implements IUserDao {
                     user.setUser_pass(rs.getString(4));
                     user.setUser_faq(rs.getInt(5));
                     user.setUser_answer(rs.getString(6));
-                    user.setUser_city(rs.getString(7));
-                    user.setLeft_num(rs.getInt(8));
-                    user.setRight_num(rs.getInt(9));
-                    user.setId(rs.getInt(10));
+                    user.setLevel(rs.getString(7));
+                    user.setUser_city(rs.getString(8));
+                    user.setLeft_num(rs.getInt(9));
+                    user.setRight_num(rs.getInt(10));
+                    user.setId(rs.getInt(11));
 
                     user.setUser_id(user_id);
 

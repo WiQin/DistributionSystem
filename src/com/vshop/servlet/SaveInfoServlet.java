@@ -26,7 +26,7 @@ public class SaveInfoServlet extends HttpServlet {
 
             service = new UserServiceImpl();
 
-            User user = service.getUserById(session.getAttribute("user").toString());
+            User user = service.getUserByUserId(session.getAttribute("user").toString());
             user.setUser_name(request.getParameter("user_name"));
             user.setUser_birthday(request.getParameter("user_birthday"));
             user.setUser_city(request.getParameter("user_city"));

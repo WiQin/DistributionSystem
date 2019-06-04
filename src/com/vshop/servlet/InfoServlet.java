@@ -27,7 +27,7 @@ public class InfoServlet extends HttpServlet {
         if(session.getAttribute("user")!=null){
 
             service = new UserServiceImpl();
-            User user = service.getUserById(session.getAttribute("user").toString());
+            User user = service.getUserByUserId(session.getAttribute("user").toString());
 
             request.setAttribute("user",user);
 

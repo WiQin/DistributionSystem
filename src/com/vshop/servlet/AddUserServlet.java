@@ -43,7 +43,7 @@ public class AddUserServlet extends HttpServlet {
         user.setCreate_time(StringHelper.getCurrentTimeStamp());
 
         // 查询父节点的实体对象
-        User parent_user = userSerive.getUserById(user_creator);
+        User parent_user = userSerive.getUserByUserId(user_creator);
 
         /**
          * (1) 获取新节点的左右下标值：
@@ -73,7 +73,7 @@ public class AddUserServlet extends HttpServlet {
 
         if (userSerive.addUser(user)) {
 
-            User current =userSerive.getUserById(user_id);
+            User current =userSerive.getUserByUserId(user_id);
             // 更新： 大于等于新增节点的左下标值的右下标值，都加个2；
             userSerive.updateRight_num(user.getLeft_num(),current.getId());
             // 更新：大于等于新增节点的右下标值的左下标值，都加个2；

@@ -41,7 +41,7 @@ public class CheckUserIdServlet extends HttpServlet {
 
 		String user_id = req.getParameter("user_id");
 		IUserService userService = new UserServiceImpl();
-		User user = userService.getUserById(user_id);
+		User user = userService.getUserByUserId(user_id);
 		System.out.println(user.getUser_id());
 		PrintWriter out = resp.getWriter();
 		if (user == null) {

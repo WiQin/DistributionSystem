@@ -22,9 +22,9 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public User getUserById(String user_id) {
+    public User getUserByUserId(String user_id) {
         iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
-        return iUserDao.getUserById(user_id);
+        return iUserDao.getUserByUserId(user_id);
     }
 
     @Override
