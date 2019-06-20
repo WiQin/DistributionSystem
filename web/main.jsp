@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="time" uri="http://www.wangyw.com/tags/timestap"%>
+<%
+	String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -39,13 +46,18 @@ body {
 							<td align="center"><img src="images/app5.gif"></td>
 						</tr>
 						<tr>
-							<td align="center">admin</td>
+							<td align="center">${currentuser.user_id}</td>
 						</tr>
 						<tr>
-							<td align="center">2015-09-08</td>
+							<td align="center">
+                            <time:timestap timestap="${currentuser.create_time}" format="yyyy-MM-dd">
+                            </time:timestap>
+                            </td>
 						</tr>
 						<tr>
-							<td align="center">(8)</td>
+							<td align="center">(<fmt:formatNumber type="number" value="${(currentuser.right_num-currentuser.leftnum-1)/2}">
+                                </fmt:formatNumber>)
+                            </td>
 						</tr>
 					</table>
 					<ul>
@@ -57,16 +69,32 @@ body {
 									<td align="center"><img src="images/app1.gif"></td>
 								</tr>
 								<tr>
-									<td align="center"><a href="#">auger</a></td>
+									<td align="center">
+                                        <c:if test="${user1 ne null}">
+                                            <a href="<%=path%>/main.do?user = ${user1.user_id}>">${user1.user_id}</a>
+                                        </c:if>
+                                        <c:if test="${user1 eq null}">
+                                            <a href="add.jsp">推荐</a>
+                                        </c:if>
+                                    </td>
 								</tr>
 								<tr>
-									<td align="center">2015-09-09</td>
+									<td align="center">
+                                        <%--EL自定义函数--%>
+                                        ${time:fmt(user1.createtime,"yyyy-MM-dd")}
+                                    </td>
 								</tr>
 								<tr>
-									<td align="center"><a href="user.jsp">查看联系</a></td>
+									<td align="center">
+                                        <c:if test="${user1 ne null}">
+                                            <a href="<%=path%>/user.do?user_id = ${user1.user_id}">查看联系</a>
+                                        </c:if>
+                                    </td>
 								</tr>
 								<tr>
-									<td align="center">(3)</td>
+									<td align="center">
+                                        <c:if test="${user1 ne null}">(${(user1.right_num-left_num-1)/2})</c:if>
+                                    </td>
 								</tr>
 
 							</table>
@@ -141,18 +169,34 @@ body {
 								<tr>
 									<td align="center"><img src="images/app4.gif"></td>
 								</tr>
-								<tr>
-									<td align="center"><a href="#">joy</a></td>
-								</tr>
-								<tr>
-									<td align="center">2015-08-16</td>
-								</tr>
-								<tr>
-									<td align="center"><a href="#">查看联系</a></td>
-								</tr>
-								<tr>
-									<td align="center">(3)</td>
-								</tr>
+                                <tr>
+                                    <td align="center">
+                                        <c:if test="${user2 ne null}">
+                                            <a href="<%=path%>/main.do?user = ${user2.user_id}>">${user2.user_id}</a>
+                                        </c:if>
+                                        <c:if test="${user2 eq null}">
+                                            <a href="add.jsp">推荐</a>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <%--EL自定义函数--%>
+                                        ${time:fmt(user2.createtime,"yyyy-MM-dd")}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <c:if test="${user2 ne null}">
+                                            <a href="<%=path%>/user.do?user_id = ${user2.user_id}">查看联系</a>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <c:if test="${user2 ne null}">(${(user2.right_num-left_num-1)/2})</c:if>
+                                    </td>
+                                </tr>
 							</table>
 							<ul>
 								<li>
@@ -224,18 +268,34 @@ body {
 								<tr>
 									<td align="center"><img src="images/ap3.gif"></td>
 								</tr>
-								<tr>
-									<td align="center"><a href="add.jsp">推荐</a></td>
-								</tr>
-								<tr>
-									<td align="center"></td>
-								</tr>
-								<tr>
-									<td align="center"></td>
-								</tr>
-								<tr>
-									<td align="center"></td>
-								</tr>
+                                <tr>
+                                    <td align="center">
+                                        <c:if test="${user3 ne null}">
+                                            <a href="<%=path%>/main.do?user = ${user3.user_id}>">${user3.user_id}</a>
+                                        </c:if>
+                                        <c:if test="${user3 eq null}">
+                                            <a href="add.jsp">推荐</a>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <%--EL自定义函数--%>
+                                        ${time:fmt(user3.createtime,"yyyy-MM-dd")}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <c:if test="${user3 ne null}">
+                                            <a href="<%=path%>/user.do?user_id = ${user3.user_id}">查看联系</a>
+                                        </c:if>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <c:if test="${user3 ne null}">(${(user3.right_num-left_num-1)/2})</c:if>
+                                    </td>
+                                </tr>
 							</table>
 							<ul>
 								<li>

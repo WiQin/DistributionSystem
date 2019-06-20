@@ -79,12 +79,12 @@ public class AddUserServlet extends HttpServlet {
             // 更新：大于等于新增节点的右下标值的左下标值，都加个2；
             userSerive.updateLeft_num(user.getRight_num(),current.getId());
 
-           /* // 获取该账号所在的树形结构的层级数
+            // 获取该账号所在的树形结构的层级数
             int user_level = userSerive.getUserLevelByUserId(user_id);
 
             //更新该账号所在的树形结构的层级数
             userSerive.updateUser_level(user_level, user_id);
-*/
+
 
             req.setAttribute("msg", "保存成功!");
         } else {

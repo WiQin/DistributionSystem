@@ -8,7 +8,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">我的分销</a></li>
+				<li><a href="main.do">我的分销</a></li>
 				<li><a href="info.do">会员中心</a></li>
 				<li><a href="sys.jsp">系统设置</a></li>
 				<li><a href="index.jsp">安全退出</a></li>

@@ -7,6 +7,8 @@ import com.vshop.util.db.JdbcUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @ClassName UserDaoImpl
@@ -48,7 +50,7 @@ public class UserDaoImpl implements IUserDao {
     **/
     @Override
     public User getUserByUserId(String user_id) {
-        String sql = "select user_creator,user_name,birthday,password,user_faq,user_answer,city,user_level,left_num,right_num,id from tuser where user_id =  ?";
+        String sql = "select user_creator,user_name,birthday,password,user_faq,user_answer,city,user_level,left_num,right_num,id,createtime from tuser where user_id =  ?";
         return (User)jdbcUtil.executeQuery(sql, new IResultSetUtil() {
             @Override
             public Object doHandler(ResultSet rs) throws SQLException {
@@ -60,11 +62,12 @@ public class UserDaoImpl implements IUserDao {
                     user.setUser_pass(rs.getString(4));
                     user.setUser_faq(rs.getInt(5));
                     user.setUser_answer(rs.getString(6));
-                    user.setLevel(rs.getString(7));
+                    user.setLevel(rs.getInt(7));
                     user.setUser_city(rs.getString(8));
                     user.setLeft_num(rs.getInt(9));
                     user.setRight_num(rs.getInt(10));
                     user.setId(rs.getInt(11));
+                    user.setCreate_time(rs.getLong(12));
 
                     user.setUser_id(user_id);
 
@@ -109,5 +112,53 @@ public class UserDaoImpl implements IUserDao {
     public boolean updateRight_num(int left_num,int id) {
         String sql = "update tuser set right_num = right_num+2 where right_num >= ? AND ID <> ?";
         return jdbcUtil.executeUpdate(sql,left_num,id)>0;
+    }
+
+    @Override
+    public int getUserLevelByUserId(String user_id) {
+        String sql = "select count(parent.user_id)+1 from tuser node,tuser parent where\n" +
+                "       node.left_num > parent.left_num and\n" +
+                "      node.left_num < parent.right_num and\n" +
+                "      node.user_id = ?";
+        return jdbcUtil.executeQuery(sql,user_id) == null ? 0 : Integer
+                .parseInt(jdbcUtil.executeQuery(sql,user_id).toString());
+    }
+
+    @Override
+    public boolean updateUser_level(int user_level, String user_id) {
+        String sql = "update tuser set user_level = ? where user_id = ?";
+        return jdbcUtil.executeUpdate(sql,user_level,user_id)>0;
+    }
+
+
+    //获取当前用户下子节点集合
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<User> getList(int left_num, int right_num,int user_level) {
+        String sql = "select user_id,createtime,left_num,right_num,user_level from tuser\n" +
+                "where left_num > ? and right_num < ? and\n" +
+                "user_level <= ? and\n" +
+                "rownum <= 12 order by left_num asc";
+
+        return (List<User>) jdbcUtil.executeQuery(sql, new IResultSetUtil() {
+            @Override
+            public Object doHandler(ResultSet rs) throws SQLException {
+
+                List<User> userList = new ArrayList<User>();
+
+                while(rs.next()){
+                    User user = new User();
+                    user.setUser_id(rs.getString(1));
+                    user.setCreate_time(rs.getLong(2));
+                    user.setLeft_num(rs.getInt(3));
+                    user.setRight_num(rs.getInt(4));
+                    user.setLevel(rs.getInt(5));
+
+                    userList.add(user);
+
+                }
+                return userList;
+            }
+        },left_num,right_num,user_level+2);
     }
 }

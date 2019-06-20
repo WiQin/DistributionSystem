@@ -33,7 +33,7 @@ $(function(){
                    $(".link_pwd").html("密码错误");
                    return flase;
                }else if(msg==3){
-                   location.href = 'main.jsp';
+                   location.href = 'main.do';
                }
 
            },

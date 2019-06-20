@@ -4,3 +4,19 @@
 3.父节点右下标值加2
 4.大于等于新增的节点的左下标值的右下标加2(排除新增节点)
 大于等于新增的节点的右下标值的左下标加2排除新增节点
+
+
+确定用户层级(添加时需写入用户层级，AddUserServlet)
+--根据用户账号查询所有父节点
+select parent.* from tuser node,tuser parent where
+       node.left_num > parent.left_num and
+      node.left_num < parent.right_num and
+      node.user_id = 'WiQin'
+--根据用户账号查询该账号所在树形结构的层级数
+select count(parent.user_id)+1 from tuser node,tuser parent where
+       node.left_num > parent.left_num and
+      node.left_num < parent.right_num and
+      node.user_id = 'WiQin'
+
+--查询当前用户的所有子节点
+select * from tuser where left_num > 1 and right_num < 10

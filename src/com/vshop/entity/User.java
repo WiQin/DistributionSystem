@@ -9,7 +9,7 @@ public class User {
     private int id;
     private String user_id;
     private String user_pass;
-    private String level;
+    private int level;
     private int left_num;
     private int right_num;
     private String user_name;
@@ -47,11 +47,11 @@ public class User {
         this.user_pass = user_pass;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 

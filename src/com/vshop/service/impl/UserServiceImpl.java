@@ -6,6 +6,8 @@ import com.vshop.entity.User;
 import com.vshop.service.IUserService;
 import com.vshop.util.db.JdbcUtil;
 
+import java.util.List;
+
 /**
  * @ClassName UserServiceImpl
  * @Description
@@ -49,5 +51,23 @@ public class UserServiceImpl implements IUserService {
     public boolean updateRight_num(int left_num,int id) {
         iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
         return iUserDao.updateRight_num(left_num,id);
+    }
+
+    @Override
+    public int getUserLevelByUserId(String user_id) {
+        iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
+        return iUserDao.getUserLevelByUserId(user_id);
+    }
+
+    @Override
+    public boolean updateUser_level(int user_level, String user_id) {
+        iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
+        return iUserDao.updateUser_level(user_level, user_id);
+    }
+
+    @Override
+    public List<User> getList(int left_num, int right_num, int user_level) {
+        iUserDao = new UserDaoImpl(JdbcUtil.getInstance());
+        return iUserDao.getList(left_num, right_num, user_level);
     }
 }

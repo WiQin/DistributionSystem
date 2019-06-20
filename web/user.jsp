@@ -79,7 +79,7 @@ input[type='text'] {
 
 			<tr>
 				<td colspan="2" align="center"><a class="btn  btn-primary"
-					href="main.jsp">返回</a></td>
+					href="main.do">返回</a></td>
 			</tr>
 		</table>
 	</div>
