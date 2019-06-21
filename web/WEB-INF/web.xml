@@ -15,12 +15,13 @@
     <param-value>/index.jsp</param-value>
   </context-param>
 
+  <!-- 配置需要登录才能操作的页面路径 -->
   <context-param>
     <param-name>validatePage</param-name>
-    <param-value>/main.jsp,/info.do,/saveInfo.do,/sys.jsp,/add.jsp,/user.jsp,/out.jsp,/add.do,/check.do</param-value>
+    <param-value>/main.jsp,/info.do,/saveInfo.do,/sys.jsp,/add.jsp,/user.jsp,/out.jsp,/add.do,/check.do,/user.do,/main.do</param-value>
   </context-param>
 
-  <!---->
+  <!-- 配置不需要登录就能访问的页面 -->
   <context-param>
     <param-name>commonPage</param-name>
     <param-value>/index.jsp,/login.do,/getpass.jsp,updatepass.jsp</param-value>

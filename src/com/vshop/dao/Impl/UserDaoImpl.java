@@ -62,8 +62,8 @@ public class UserDaoImpl implements IUserDao {
                     user.setUser_pass(rs.getString(4));
                     user.setUser_faq(rs.getInt(5));
                     user.setUser_answer(rs.getString(6));
-                    user.setLevel(rs.getInt(7));
-                    user.setUser_city(rs.getString(8));
+                    user.setUser_city(rs.getString(7));
+                    user.setLevel(rs.getInt(8));
                     user.setLeft_num(rs.getInt(9));
                     user.setRight_num(rs.getInt(10));
                     user.setId(rs.getInt(11));

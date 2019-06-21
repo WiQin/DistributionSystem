@@ -28,10 +28,10 @@ $(function(){
 
                if(msg==1){
                    $(".link_pwd").html("用户名错误");
-                   return flase;
+                   return false;
                }else if(msg == 2){
                    $(".link_pwd").html("密码错误");
-                   return flase;
+                   return false;
                }else if(msg==3){
                    location.href = 'main.do';
                }
@@ -39,7 +39,7 @@ $(function(){
            },
            error:function(er){
                console.log(er);
-               alert(er.message);
+               //alert(er.message);
            }
        })
     })

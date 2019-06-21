@@ -50,8 +50,8 @@ body {
 						</tr>
 						<tr>
 							<td align="center">
-                            <time:timestap timestap="${currentuser.create_time}" format="yyyy-MM-dd">
-                            </time:timestap>
+                            <time:timestap timestap="${currentuser.create_time}" format="yyyy-MM-dd"/>
+
                             </td>
 						</tr>
 						<tr>
