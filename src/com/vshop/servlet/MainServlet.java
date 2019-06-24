@@ -38,6 +38,8 @@ public class MainServlet extends HttpServlet {
 
             List<User> userList = userService.getList(user.getLeft_num(),user.getRight_num(),user.getLevel());
 
+            System.out.println(userList);
+
             int i = 0;
             for (User user2 :
                     userList) {
@@ -61,7 +63,7 @@ public class MainServlet extends HttpServlet {
             }
             
             request.setAttribute("list",userList);
-            request.setAttribute("currentuser",user);
+            request.setAttribute("current_user",user);
 
             request.getRequestDispatcher("main.jsp").forward(request,response);
 

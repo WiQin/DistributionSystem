@@ -46,16 +46,16 @@ body {
 							<td align="center"><img src="images/app5.gif"></td>
 						</tr>
 						<tr>
-							<td align="center">${currentuser.user_id}</td>
+							<td align="center">${current_user.user_id}</td>
 						</tr>
 						<tr>
 							<td align="center">
-                            <time:timestap timestap="${currentuser.create_time}" format="yyyy-MM-dd"/>
+                            <time:timestap timestap="${current_user.create_time}" format="yyyy-MM-dd"/>
 
                             </td>
 						</tr>
 						<tr>
-							<td align="center">(<fmt:formatNumber type="number" value="${(currentuser.right_num-currentuser.leftnum-1)/2}">
+							<td align="center">(<fmt:formatNumber type="number" value="${(current_user.right_num-current_user.left_num-1)/2}">
                                 </fmt:formatNumber>)
                             </td>
 						</tr>
@@ -70,10 +70,10 @@ body {
 								</tr>
 								<tr>
 									<td align="center">
-                                        <c:if test="${user1 ne null}">
-                                            <a href="<%=path%>/main.do?user = ${user1.user_id}>">${user1.user_id}</a>
+                                        <c:if test="${user_1 ne null}">
+                                            <a href="<%=path%>/main.do?user = ${user_1.user_id}>">${user_1.user_id}</a>
                                         </c:if>
-                                        <c:if test="${user1 eq null}">
+                                        <c:if test="${user_1 eq null}">
                                             <a href="add.jsp">推荐</a>
                                         </c:if>
                                     </td>
@@ -81,19 +81,19 @@ body {
 								<tr>
 									<td align="center">
                                         <%--EL自定义函数--%>
-                                        ${time:fmt(user1.createtime,"yyyy-MM-dd")}
+                                        ${time:fmt(user_1.create_time,"yyyy-MM-dd")}
                                     </td>
 								</tr>
 								<tr>
 									<td align="center">
-                                        <c:if test="${user1 ne null}">
-                                            <a href="<%=path%>/user.do?user_id = ${user1.user_id}">查看联系</a>
+                                        <c:if test="${user_1 ne null}">
+                                            <a href="<%=path%>/user.do?user_id = ${user_1.user_id}">查看联系</a>
                                         </c:if>
                                     </td>
 								</tr>
 								<tr>
 									<td align="center">
-                                        <c:if test="${user1 ne null}">(${(user1.right_num-left_num-1)/2})</c:if>
+                                        <c:if test="${user_1 ne null}">(${(user_1.right_num-user_1.left_num-1)/2})</c:if>
                                     </td>
 								</tr>
 
@@ -194,7 +194,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td align="center">
-                                        <c:if test="${user2 ne null}">(${(user2.right_num-left_num-1)/2})</c:if>
+                                        <c:if test="${user2 ne null}">(${(user2.right_num-user2.left_num-1)/2})</c:if>
                                     </td>
                                 </tr>
 							</table>
@@ -293,7 +293,7 @@ body {
                                 </tr>
                                 <tr>
                                     <td align="center">
-                                        <c:if test="${user3 ne null}">(${(user3.right_num-left_num-1)/2})</c:if>
+                                        <c:if test="${user3 ne null}">(${(user3.right_num-user3.left_num-1)/2})</c:if>
                                     </td>
                                 </tr>
 							</table>
